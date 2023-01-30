@@ -1,0 +1,12 @@
+<mat-spinner *ngIf="!ready"></mat-spinner>
+<div id='customContainer' *ngIf="ready">
+    <mat-card class="example-card">
+        <mat-card-content>
+            <app-graph-view [id]="id"></app-graph-view>
+        </mat-card-content>
+      </mat-card>
+<button mat-raised-button color="primary" routerLink="/creating/{{id}}" *ngIf="id!=-1">Edit</button>
+<button mat-raised-button color="primary"  style="margin: 20px" routerLink="/overall" (click)="cancelChanging()">Cancel</button>
+<button mat-raised-button color="primary" style="margin: 20px 40px 0px 0px; float:right;" routerLink="/overall" (click)="delete()">Delete</button>
+<button mat-raised-button color="primary" style="margin: 20px; float:right;" routerLink="/overall" (click)="saveData()">Save</button>
+</div>

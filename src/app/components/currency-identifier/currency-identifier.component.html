@@ -1,0 +1,27 @@
+<div id='currencyContainer'>
+    <div>
+    <mat-form-field appearance="fill" >
+        <mat-label>Choose from currency</mat-label>
+        <mat-select [(ngModel)]="currency2[0]" (ngModelChange)="newCurrencies()">
+          <mat-option *ngFor="let currency of optionalCurrencies" [value]="currency.value" >
+            {{currency.viewValue}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+    <button mat-icon-button aria-label="Example icon button with a vertical three dot icon"
+    (click)="changeValues()">
+        <mat-icon>sync_alt</mat-icon>
+      </button>
+
+    <div>
+      <mat-form-field appearance="fill">
+        <mat-label>Choose to currency</mat-label>
+        <mat-select [(ngModel)]="currency2[1]" (ngModelChange)="newCurrencies()">
+          <mat-option *ngFor="let currency of optionalCurrencies" [value]="currency.value">
+            {{currency.viewValue}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+</div>

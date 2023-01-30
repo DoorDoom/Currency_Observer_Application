@@ -1,0 +1,29 @@
+<h2>1 Stage. Pick currencies for convertation</h2>
+<app-currency-identifier (changeCurrencies)="setCurrencies($event)"></app-currency-identifier>
+<h2>2 Stage. Pick date range for visualization</h2>
+<app-range-date-for-currency (changeRangeDate)="getDate($event)" (ready)="changeReadiness($event)"></app-range-date-for-currency>
+<h2>3 Stage. Adjust optional configuration</h2>
+
+<div class='customContainer'>
+    <div>
+    <mat-form-field appearance="fill" >
+        <mat-label>Choose color</mat-label>
+        <mat-select [(ngModel)]="color">
+          <mat-option *ngFor="let color of optionalColors" [value]="color" >
+            {{color}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+<div>
+    <mat-form-field appearance="fill">
+        <mat-label>Name of chart</mat-label>
+        <input (change)="changeReadiness()" matInput placeholder="Name" [formControl]="nameFormControl" [(ngModel)]="name">
+        <mat-error *ngIf="nameFormControl.hasError('required')">
+          Name is <strong>required</strong>
+        </mat-error>
+    </mat-form-field>
+</div>
+</div>
+  <button mat-raised-button color="primary" style="margin: 20px;" routerLink="/overall">Cancel</button>
+  <button mat-raised-button color="primary" style="margin: 20px 40px; float:right;" (click)="saveIntermediateData()" routerLink="/changing/{{id}}" [disabled]="!nextStage">Next</button>

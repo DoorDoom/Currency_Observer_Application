@@ -1,0 +1,14 @@
+<form [formGroup]="rangeFormGroup" style="margin: 20px;"> 
+<mat-form-field appearance="fill">      
+    <mat-label>Enter a date range</mat-label>      
+    <mat-date-range-input [rangePicker]="picker" [max]="today" [min]="dayOfStart">      
+      <input matStartDate placeholder="Start date" formControlName="start" #dateRangeStart>  
+      <input matEndDate placeholder="End date" formControlName="end" #dateRangeEnd
+      (dateChange)="newRangeDate(dateRangeStart.value,dateRangeEnd.value)"
+      (dateChange)="changeReadiness()">    
+    </mat-date-range-input>      
+    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>      
+    <mat-date-range-picker #picker></mat-date-range-picker>      
+    <mat-error>Date Range is mandatory</mat-error> 
+  </mat-form-field>
+</form>

@@ -1,0 +1,20 @@
+<div *ngIf="count==0">
+  <p>There is nothing.</p>
+  <a routerLink="/creating">Create new graph</a>
+</div>
+<div *ngIf="count>0">
+  <mat-card class="example-card" *ngFor="let item of list">
+    <mat-card-header>
+      <mat-card-title>{{item.data[0].label}} </mat-card-title>
+      <mat-card-subtitle>Chart id: {{item.id}}</mat-card-subtitle>
+    </mat-card-header>
+    <mat-card-content>
+      <app-graph-view [id]=item.id></app-graph-view>
+    </mat-card-content>
+    <mat-card-actions style="width: 100%; display: flex;">
+      <button mat-flat-button color="primary" style="margin: 10px;" routerLink="/creating/{{item.id}}">Edit</button>
+      <button mat-flat-button color="primary" style="margin: 10px;" routerLink="/overall" (click)="delete(item.id)">Delete</button>
+    </mat-card-actions>
+  </mat-card>
+  <button mat-flat-button color="primary" style="margin:10px 0.5%; width: 99%;" routerLink="/creating" >Create New Item</button>
+</div>
